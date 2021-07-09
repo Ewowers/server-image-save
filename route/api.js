@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Product = require("./model"); // модель продукта
-
+const auth = require("./auth"); //роутер авторизаций и регистраций
 router.get("/", async (req, res) => {
   // все продукты
   let product = await Product.find();
@@ -26,4 +26,6 @@ router.post("/add", async (req, res) => {
   await product.save();
   res.status(200).send(true);
 });
+
+router.use("/auth", auth); //мидлвейр регистраций и авторизаций
 module.exports = router;
