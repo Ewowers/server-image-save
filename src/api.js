@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Product = require("./model"); // модель продукта
+const Product = require("./model/product"); // модель продукта
 const auth = require("./auth"); //роутер авторизаций и регистраций
 router.get("/", async (req, res) => {
   // все продукты

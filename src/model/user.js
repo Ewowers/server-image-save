@@ -9,9 +9,9 @@ const schema = new Schema({
     required: true,
     type: String,
   },
-  registry: {
+  status: {
     required: true,
-    type: Boolean,
+    type: String,
   },
 });
 module.exports = model("users", schema);
