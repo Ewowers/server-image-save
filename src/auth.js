@@ -48,6 +48,14 @@ router.post("/authorization", async (req, res) => {
 });
 router.post("/onload", async (req, res) => {
   //вход при загрузки страницы
+  let admin = await User.findOne({ name: "admin" });
+  if (!admin) {
+    User({
+      name: "admin",
+      password: "admin",
+      status: "admin",
+    }).save();
+  }
   let user = await User.findById(req.cookies.id);
   if (user?.status === "admin") res.json({ status: true, name: user.name, url: "admin" });
   if (user?.status === "user") res.json({ status: true, name: user.name, url: "product" });

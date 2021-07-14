@@ -5,7 +5,6 @@ const api = require("./src/api"); // роутер апи
 const app = express();
 app.use(express.json()); // ajax json
 app.use(cookieParser()); // куки
-
 app.use("/api", api); // мидлвейр апи
 const start = async () => {
   try {

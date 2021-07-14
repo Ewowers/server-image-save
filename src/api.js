@@ -6,9 +6,10 @@ router.get("/", async (req, res) => {
   let product = await Product.find();
   res.status(200).json(product);
 });
-router.get("/type=:id", async (req, res) => {
+router.get("/product=:id", async (req, res) => {
   // получение по категорий
-  let product = await Product.find({ type: req.params.id });
+  let type = req.params.id.split("_").join(" ");
+  let product = await Product.find({ type: type });
   res.status(200).json(product);
 });
 router.delete("/:id", async (req, res) => {
