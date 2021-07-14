@@ -1,15 +1,20 @@
 const { Router } = require("express");
 let User = require("./model/user");
 const router = Router();
+
+router.get("/", async (req, res) => {
+  let users = await User.find();
+  res.json(users);
+});
+router.get("/type=:id", async (req, res) => {
+  let users = await User.find({ status: req.params.id });
+  res.json(users);
+});
 router.post("/user/:id", async (req, res) => {
   let user = await User.findById(req.params.id);
   res.json(user);
 });
-router.get("/", async (req, res) => {
-  //все Юзеры
-  const users = await User.find();
-  res.json(users);
-});
+
 router.delete("/:id", async (req, res) => {
   //удалить регистрацию
   let user = await User.findByIdAndDelete(req.params.id);
