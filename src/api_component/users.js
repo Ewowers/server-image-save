@@ -56,6 +56,14 @@ class LogicgUsers {
       .json({ status: true, url: candidate.status === "user" ? "user" : "admin" });
   }
   async onload(req, res) {
+    let admin = await User.findOne({ name: "admin" });
+    if (!admin) {
+      new User({
+        name: "admin",
+        password: "admin",
+        status: "admin",
+      }).save();
+    }
     let token = req.cookies.toket;
     if (!token) return res.json({ status: false, message: "token not" });
     token = jwt.verify(token, keyJWT);
