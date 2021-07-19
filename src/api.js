@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const auth = require("./auth"); //роутер авторизаций и регистраций
-const product = require("./apiProduct");
+const product = require("./apiProduct"); // роутер товаров
+const blacklist = require("./banlist");
 router.use("/auth", auth); //мидлвейр регистраций и авторизаций
-router.use("/product", product);
+router.use("/product", product); // мидлвейр продукты
+router.use("/blacklist", blacklist); // мидлвейр бан лист
 // router.get("/", async (req, res) => {
 //   // все продукты
 //   let product = await Product.find();

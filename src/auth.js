@@ -11,8 +11,10 @@ router.get("/type=:id", logicg.gets); //получить пользовател�
 router.post("/user/:id", logicg.getOneUser); // получить пользователя по id
 router.delete("/:id", logicg.deleteUser); // удалить юзера
 router.put("/:id", logicg.updateUser); //изменить юзера
+router.put("/", logicg.updatesUser); //
 router.post("/registration", logicg.registration); //регистрация юзера
 router.post("/authorization", logicg.authorization); // авторизация
+router.post("/important", logicg.token);
 router.post("/onload", logicg.onload); //авто вход
 router.post("/out", (req, res) => {
   //выход

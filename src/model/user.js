@@ -12,5 +12,12 @@ const schema = new Schema({
   status: {
     type: String,
   },
+  ip: String,
+  important: Number,
+  phone: Number,
+  email: String,
+  fio: String,
+  address: String,
+  ava: String,
 });
 module.exports = model("users", schema);
